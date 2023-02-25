@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/login_layout.cshtml";
+}
+
+<!-- Cart view section -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">Login Here</h3>
+                <div class="">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="">
+
+
+                                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "aa-login-form" }))
+                                {
+                                    <label for="">Username or Email address<span>*</span></label>
+                                    <input name="UserName" type="text" required placeholder="Username">
+                                    <label for="">Password<span>*</span></label>
+                                    <input name="Password" type="password" required placeholder="Password">
+                                    <button type="submit" class="btn btn-success">Login</button>
+                                    <label class="rememberme" for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                                }
+                                <br />
+                            </div>
+                            <div>
+                                <p>if you dont have an account, <a href="@Url.Action("RegisterCustomer", "Account")" class="text-primary">Click Here </a>to register</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- / Cart view section -->

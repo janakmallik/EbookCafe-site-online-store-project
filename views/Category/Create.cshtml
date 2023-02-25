@@ -1,0 +1,58 @@
+﻿@model MyEcommerceAdmin.Models.Category
+@{
+    ViewBag.Title = "Add New Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+
+        @*back button*@
+        <div class="counter mt-4">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <a href="@Url.Action("Index", "Product")" class="btn btn-danger btn-sm fs-4 mb-4"> << Back</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col">
+            <h2 class="text-info">Add New Category</h2>
+
+            <div class="col-md-12">
+                @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="row mb-2">
+                        <div id="msg">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            @Html.LabelFor(x => x.Name, new { @class = "form-label fs-4" })
+                            @Html.TextBoxFor(x => x.Name, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                            <button type="submit" class="btn btn-success btn-lg col-4" style="margin-top:10px;"><i class="fa-regular fa-floppy-disk fs-4"></i> Save</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    </div>
+    @section scripts{
+        <script src="~/Content/JS/jquery-3.6.0.js"></script>
+        <script src="~/Content/JS/jquery.validate.js"></script>
+        <script src="~/Content/JS/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Content/JS/jquery.unobtrusive-ajax.js"></script>
+        <script>
+            function clearAll() {
+                $("#form0").trigger("reset");
+            }
+        </script>
+
+    }
+

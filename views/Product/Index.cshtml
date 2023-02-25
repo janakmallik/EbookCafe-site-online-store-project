@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MyEcommerceAdmin.Models.Product>
+@{
+    ViewBag.Title = "Product Information";
+}
+
+<div class="row">
+    <div class="col">
+        <h2 class="text-info">Book List</h2>
+        
+        <div class="d-flex justify-content-end mb-2">
+            <a href="@Url.Action("Create", "Product")" class="btn btn btn-outline-primary">Add New Books</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-condensed table-hover table-bordered table-striped table">
+                <thead>
+                    <tr>
+                        <th>Books name</th>
+                        <th>Writter</th>
+                        <th>Category</th>
+                        @*<th>@Html.DisplayNameFor(p => p.SubCategoryID)</th>*@
+                        <th>Price</th>
+                        <th>Available 
+                        @*<br />*@
+                            <span class="badge bg-danger">Permission to sell</span>
+                        </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var pdt in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(p => pdt.Name)</td>
+                            <td>@Html.DisplayFor(p => pdt.Supplier.CompanyName)</td>
+                            <td>@Html.DisplayFor(p => pdt.Category.Name)</td>
+                            @*<td>@Html.DisplayFor(p => pdt.SubCategory.Name)</td>*@
+                            <td>@Html.DisplayFor(p => pdt.UnitPrice)</td>
+                            <td>@Html.DisplayFor(p => pdt.UnitInStock)</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Product", new {id = pdt.ProductID })" class="btn btn-outline-warning btn-sm">Edit</a>
+                                <a href="@Url.Action("Details", "Product", new {id = pdt.ProductID })" class="btn btn-outline-info btn-sm">Detail</a>
+                                <a href="@Url.Action("Delete", "Product", new {id = pdt.ProductID })" class="btn btn-outline-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+﻿
+@model MyEcommerceAdmin.Models.Supplier
+@{
+    ViewBag.Title = "Supplier Details";
+}
+
+
+<div class="container">
+
+
+
+    <div class="row">
+        @*back button*@
+        <div class="counter mt-4">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <a href="@Url.Action("Index", "Supplier")" class="btn btn-danger btn-sm fs-4 mb-4"> << Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="about-text go-to">
+
+                <h3 class="theme-color lead fs-2">@Html.DisplayFor(x => x.CompanyName)</h3>
+                <div class="row about-list">
+                    <div class="col-md-6">
+                        <div class="media">
+                            <label class="fs-4">Publisher Name</label>
+                            <p>@Html.DisplayFor(x => x.ContactName)</p>
+                        </div>
+                        <div class="media">
+                            <label class="fs-4">Topic</label>
+                            <p>@Html.DisplayFor(x => x.ContactTitle)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="media">
+                            <label class="fs-4">E-mail</label>
+                            <p>@Html.DisplayFor(x => x.Email)</p>
+                        </div>
+                        <div class="media">
+                            <label class="fs-4">Phone</label>
+                            <p>@Html.DisplayFor(x => x.Phone)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="media">
+                            <label class="fs-4">Country</label>
+                            <p>@Html.DisplayFor(x => x.Country)</p>
+                        </div>
+                        <div class="media">
+                            <label class="fs-4">City</label>
+                            <p>@Html.DisplayFor(x => x.City)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="media">
+                            <label class="fs-4">Address</label>
+                            <p>@Html.DisplayFor(x => x.Address)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    @*edit delete btn*@
+    <div class="counter mt-4 ">
+        <div class="row justify-content-md-end align-self-end">
+            <div class="col-6 col-lg-3 justify-content-md-end align-self-end">
+                @*<a href="@Url.Action("Index", "Product")" class="btn btn-danger btn-sm fs-4"> << Back</a>*@
+
+                <a href="@Url.Action("Edit", "Supplier", new {id = Model.SupplierID })" class="btn btn-secondary btn-sm fs-4">Edit</a>
+                <a href="@Url.Action("Delete", "Supplier", new {id = Model.SupplierID })" class="btn btn-danger btn-sm fs-4">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

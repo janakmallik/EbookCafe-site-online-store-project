@@ -1,0 +1,94 @@
+﻿
+@model MyEcommerceAdmin.Models.Supplier
+@{
+    ViewBag.Title = "Edit Writter Profile";
+}
+
+<div class="container">
+    <div class="row">
+
+        @*back button*@
+        <div class="counter mt-4">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <a href="@Url.Action("Index", "Supplier")" class="btn btn-danger btn-sm fs-4 mb-4"> << Back</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <h2 class="text-info">@Model.CompanyName</h2>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                @using (Html.BeginForm("Edit", "Supplier", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.SupplierID)
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Wirtter name</label>
+                            @Html.TextBoxFor(x => x.CompanyName, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.CompanyName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Publisher name</label>
+                            @Html.TextBoxFor(x => x.ContactName, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.ContactName, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Topic</label>
+                            @Html.TextBoxFor(x => x.ContactTitle, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.ContactTitle, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="form-label">Email</label>
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control fs-4", Type = "email" })
+                            @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone</label>
+                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.Phone, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Country</label>
+                            @Html.TextBoxFor(x => x.Country, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.Country, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">City</label>
+                            @Html.TextBoxFor(x => x.City, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Address</label>
+                            @Html.TextAreaFor(x => x.Address, new { @class = "form-control fs-4" })
+                            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+                        </div>
+                        
+                    </div>
+
+                    @*add btn*@
+                    <div class=" mt-4">
+                        <div class="row justify-content-md-end align-self-end">
+                            <div class="col-6 col-lg-3">
+
+                                <button type="submit" class="btn btn-success btn-lg col-6">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

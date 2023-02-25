@@ -1,0 +1,297 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title - EBookcafe</title>
+    <link href="~/Content/MyContent/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/jquery.simpleLens.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/jquery.smartmenus.bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/nouislider.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/sequence-theme.modern-slide-in.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/slick.css" rel="stylesheet" />
+    <link href="~/Content/MyContent/css/style.css" rel="stylesheet" />
+    <style>
+        /*#menu .menu-area .navbar-default .navbar-nav .open a {
+            background-color: red;
+        }*/
+
+        /*#aa-footer .aa-footer-top .aa-footer-top-area .aa-footer-widget .aa-footer-nav li a {
+            color: #f8f8f8;
+            font-size: 15px;*/
+            /*background-color: red;*/
+        /*}*/
+    </style>
+
+    @*JS Link*@
+
+    <script src="~/Content/MyContent/js/jquery.min.js"></script>
+
+    @*searching products*@
+
+    <link href="~/Content/MyContent/Intellisence/css/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Content/MyContent/Intellisence/js/jquery-1.10.2.min.js"></script>
+    <script src="~/Content/MyContent/Intellisence/js/jquery-ui.min.js"></script>
+
+    @*Custom JQuery Code For Seraching Product*@
+
+    <script type="text/javascript">
+        $(function () {
+            $("#searchTxtBox").autocomplete({
+                source: '@Url.Action("GetProducts","Product1")'
+            });
+        });
+    </script>
+
+</head>
+<body>
+    @*>>Webpage loader>>*@
+
+    @*<div id="wpf-loader-two">
+            <div class="wpf-loader-two-inner">
+                <span>Loading</span>
+            </div>
+        </div>*@
+    <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+
+    <!-- Start header section -->
+    <header id="aa-header">
+        <!-- start header top  -->
+        <div class="aa-header-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12" >
+                        <div class="aa-header-top-area">
+                            <!-- start header top left -->
+                            <div class="aa-header-top-left">
+
+                                <!-- start cellphone -->
+                                <div class="ebookhead">
+                                    <p>EbookCafe.com</p>
+                                </div>
+                            </div>
+                            <!-- header top Right -->
+                            <div class="aa-header-top-right">
+                                <ul class="aa-head-top-nav-right">
+
+                                    @*<li><a href="@(Session["username"] != null ? Url.Action("Index", "Account") : Url.Action("Login", "Account"))">My Account</a></li>*@
+
+
+                                    @if (Session["username"] == null)
+                                    {
+
+                                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                                        <li>@Html.ActionLink("Register", "RegisterCustomer", "Account")</li>
+
+                                    }
+                                    else
+                                    {
+                                        <li class="hidden-xs">
+                                            <a href="@(Session["username"] != null ? Url.Action("Index", "WishList") : Url.Action("Login", "Account"))">
+                                                Wishlist @if (@ViewBag.WlItemsNo > 0)
+                                                {<text>(@ViewBag.WlItemsNo)</text>}
+                                            </a>
+                                        </li>
+
+                                        <li class="hidden-xs">
+                                            <a href="@(Session["username"] != null ? Url.Action("Index", "MyCart") : Url.Action("Login", "Account"))">
+                                                My Cart @if (@ViewBag.NoOfItem > 0)
+                                                {<text>(@ViewBag.NoOfItem)</text>}
+                                            </a>
+                                        </li>
+
+                                        <li class="hidden-xs">
+                                            <a href="@(Session["username"] != null ? Url.Action("Index", "CheckOut") : Url.Action("Login", "Account"))">
+                                                Checkout
+                                            </a>
+                                        </li>
+
+
+                                        <li><a href="@Url.Action("Logout","Account")">Logout</a></li>
+
+                                        <li>
+                                            <a href="@(Session["username"] != null ? Url.Action("Index", "Account") : Url.Action("Login", "Account"))">
+                                                @Session["username"]
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- start header bottom  -->
+        <div class="aa-header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-header-bottom-area">
+                            <!-- logo  -->
+                            @*<h2 class="text-center"><a href="@Url.Action("Index","Home")">EBookcafe.com</a></h2>*@
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    @*banner image*@
+    <section id="aa-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="aa-banner-area">
+                            <a href="@Url.Action("Index","Home")"><img src="~/Content/img/ebook_banner.jpg" alt="fashion banner img"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    <footer id="aa-footer" style="color: aliceblue; font-size: 15px;">
+        <!-- footer bottom -->
+        <div class="aa-footer-top" style="background-color: black;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-top-area">
+                            <div class="row">
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="aa-footer-widget text-uppercase">
+                                        <h3>EbookCafe</h3>
+                                        <p style="color:aliceblue;">
+                                            Ebook Cafe has a vast range of titles from all major publishers. For your Apple or Android device, K
+                                        </p>
+
+                                        <ul class="aa-footer-nav">
+                                            <li><a href="#" class="text-uppercase">facebook</a></li>
+                                            <li><a href="#" class="text-uppercase">instagram</a></li>
+                                            <li><a href="#" class="text-uppercase">twitter</a></li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 text-uppercase">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>Policy</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="#">Delivery</a></li>
+                                                <li><a href="#">Returns</a></li>
+                                                <li><a href="#">Services</a></li>
+                                                <li><a href="#">Discount</a></li>
+                                                <li><a href="#">Special Offer</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 text-uppercase">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget">
+                                            <h3>links</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li><a href="@Url.Action("Index", "admin_Login")">Admin Login</a></li>
+                                                <li><a href="#">Our Services</a></li>
+                                                <li><a href="#">Our Products</a></li>
+                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="#">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-6 text-uppercase">
+                                    <div class="aa-footer-widget">
+                                        <div class="aa-footer-widget" style="color:aliceblue;">
+                                            <h3>Contact Info</h3>
+                                            <ul class="aa-footer-nav">
+                                                <li>Dhaka, Bangladesh</li>
+                                                <li>017-937-11207</li>
+                                                <li>help@EBookcafe.org</li>
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- footer-bottom -->
+        <div class="aa-footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="aa-footer-bottom-area">
+                            <p>&copy; @DateTime.Now.Year - <a href="https://www.ebookcafe.com">EBookcafe</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="~/Content/MyContent/js/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Content/MyContent/js/bootstrap.js"></script>
+    <script src="~/Content/MyContent/js/jquery.smartmenus.js"></script>
+    <script src="~/Content/MyContent/js/jquery.smartmenus.bootstrap.js"></script>
+    <script src="~/Content/MyContent/js/sequence.js"></script>
+    <script src="~/Content/MyContent/js/sequence-theme.modern-slide-in.js"></script>
+    <script src="~/Content/MyContent/js/jquery.simpleGallery.js"></script>
+    <script src="~/Content/MyContent/js/jquery.simpleLens.js"></script>
+    <script src="~/Content/MyContent/js/slick.js"></script>
+    <script src="~/Content/MyContent/js/nouislider.js"></script>
+    <script src="~/Content/MyContent/js/custom.js"></script>
+    @RenderSection("scripts", false)
+
+    <script type="text/javascript">
+        $(function () {
+
+            // Initalize modal dialog
+
+            $('body').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#login-modal');
+                $(this).attr('data-toggle', 'modal');
+            });
+
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+
+            $('body').on('click', '.modal-close-btn', function () {
+                $('#login-modal').modal('hide');
+            });
+
+            //clear modal cache, so that new content can be loaded
+            $('#login-modal').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+        });</script>
+
+
+</body>
+</html>
+

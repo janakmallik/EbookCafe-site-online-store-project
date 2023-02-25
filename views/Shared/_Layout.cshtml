@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
+    <meta name="author" content="AdminKit">
+    <meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+    <title>@ViewBag.Title - EBookcafe</title>
+    <link href="~/Content/CSS/bootstrap.css" rel="stylesheet" />
+    <link href="~/Fontawesome/css/all.css" rel="stylesheet" />
+    <link href="~/Content/CSS/app.css" rel="stylesheet" />
+    @RenderSection("Head", false)
+</head>
+
+<body>
+    <div class="wrapper">
+        @*Sidebar Navegation Start Here*@
+        <nav id="sidebar" class="sidebar js-sidebar">
+            <div class="sidebar-content js-simplebar">
+                <a class="sidebar-brand" href="@Url.Action("Index", "Dashboard")">
+                    <span class="align-middle">EBookcafe</span>
+                </a>
+
+                <ul class="sidebar-nav">
+
+                    <li class="sidebar-item active">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "Dashboard")">
+                            <i class="fa-solid fa-gauge"></i><span class="align-middle">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "Order")">
+                            <i class="fa-regular fa-cart-shopping-fast"></i><span class="align-middle">Order</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "Product")">
+                            <i class="fa-solid fa-table"></i><span class="align-middle">Product</span>
+                        </a>
+                    </li>
+
+                  
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "Supplier")">
+                            <i class="fa-regular fa-truck-field"></i><span class="align-middle">Writter Info</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Index", "Customer")">
+                            <i class="fa-light fa-person"></i><span class="align-middle">Customer</span>
+                        </a>
+                    </li>
+                    
+                    <li class="sidebar-item">
+                        <a class="sidebar-link fs-4" href="@Url.Action("Create", "Category")">
+                            <i class="fa-regular fa-cabinet-filing"></i><span class="align-middle">Add Category</span>
+                        </a>
+                    </li>
+
+
+
+
+                    
+
+                    
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="main">
+            
+            @*Content Area Srart Here*@
+            <main class="content">
+                <div class="container-fluid p-0">
+                    @RenderBody()
+                </div>
+            </main>
+            @*Footer Section Start*@
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row text-muted">
+                        <div class="col-6 text-start">
+                            <p class="mb-0">
+                                <a class="text-muted nav-link" href="@Url.Action("Index", "Dashboard")">&copy; @DateTime.Now.Year<strong>&nbsp;EBookcafe</strong></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    @RenderSection("scripts", false)
+    <script src="~/Content/JS/bootstrap.js"></script>
+    <script src="~/Content/JS/app.js"></script>
+</body>
+</html>

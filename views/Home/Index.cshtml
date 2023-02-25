@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<style>
+    .aa-browse-btn {
+        display: inline-block;
+        font-size: 16px;
+        padding: 12px 18px;
+        color: #a94442;
+    }
+</style>
+
+<div class="container">
+    <p class="" style="font-size: 75px; text-align: center; ">
+        Buy All Your Books and E-books
+        <br />at
+        <a href="@Url.Action("Index","Home")" style="color:lightslategrey;"> EBookCafe.com</a>
+    </p>
+</div>
+@*banner image*@
+<section id="aa-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="aa-banner-area">
+                        <a href="@Url.Action("Index","Home")"><img src="~/Content/img/ebook_banner.jpg" alt="fashion banner img"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+

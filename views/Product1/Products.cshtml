@@ -1,0 +1,111 @@
+﻿@using PagedList;
+@*@using PagedList.Mvc;*@
+
+@model IPagedList<MyEcommerceAdmin.Models.Product>
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+ }
+
+
+<style>
+    .pagination > .active > a {
+        color: #fff;
+        background-color: #3fc35f;
+        border: 1px solid #3fc35f;
+    }
+
+    .aa-sidebar-price-range #minValue #maxValue {
+        border: 1px solid #e8e7e6;
+        display: inline-block;
+        font-size: 14px;
+        height: 30px;
+        margin-right: 10px;
+        margin-top: 20px;
+        padding: 4px 10px;
+    }
+</style>
+<!-- catg header banner section -->
+@if (!string.IsNullOrEmpty(Request.QueryString["categoryName"]))
+{
+<section id="aa-catg-head-banner">
+    <img src="~/Content/img/fashion/fashion-header-bg-8.jpg" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+        <div class="container">
+            <div class="aa-catg-head-banner-content">
+                <h2>@(Request.QueryString["categoryName"])</h2>
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index","Home")">Home</a></li>
+                    <li class="active">@(Request.QueryString["categoryName"])</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>}
+<!-- / catg header banner section -->
+<!-- product category -->
+<section id="aa-product-category">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="aa-product-catg-content">
+                    <div class="aa-product-catg-head">
+                        <div class="aa-product-catg-head-left">
+                            @using (Html.BeginForm("Products", "Product1", FormMethod.Post, new { @id = "ssForm", categoryName = Request.QueryString["categoryName"] }))
+                            {
+
+                <label for="">Sort by</label>
+                                <select name="sortBy">
+                                    <option value="Default" selected> Default</option>
+                                    <option value="Name"> Name</option>
+                                    <option value="Price">Price</option>
+                                    <option value="Date">Date</option>
+                                </select>
+
+                                                <label for="">Show</label>
+                                                                <select name="showNoProducts" onchange="">
+                                                                    <option value="6" selected>6</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="12">12</option>
+                                                                </select>}
+                        </div>
+                        
+                    </div>
+                    <div class="aa-product-catg-body">
+                        <ul class="aa-product-catg">
+                            <!-- start single product item -->
+                            @if (Model != null || Model.Count > 0)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    { Html.RenderPartial("_Product", item); }
+                                }
+                            }
+                            else
+                            {
+
+                <h3>Sorry! There is no Product available</h3>}
+                            <!-- end start single product item -->
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+</section>
+<!-- / product category -->
+
+<script type="text/javascript">function updateMinInput(val) {
+        document.getElementById('minValue').value = 00;
+        document.getElementById('minValue').value = val * 10;
+    }
+    function updateMaxInput(val) {
+        document.getElementById('maxValue').value = 00;
+        document.getElementById('maxValue').value = val * 100;
+    }</script>
+
+

@@ -1,0 +1,93 @@
+﻿
+@model MyEcommerceAdmin.Models.Supplier
+@{
+    ViewBag.Title = "Conform to Delete Supplier";
+}
+
+<div class="container">
+
+    <div class="row">
+        @*back button*@
+        <div class="counter mt-4">
+            <div class="row">
+                <div class="col-6 col-lg-3">
+                    <a href="@Url.Action("Index", "Supplier")" class="btn btn-danger btn-sm fs-4 mb-4"> << Back</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="col-md-12">
+                @using (Html.BeginForm("Delete", "Supplier", FormMethod.Post))
+                {
+                    @Html.HiddenFor(x => x.SupplierID)
+                    @Html.AntiForgeryToken()
+
+                    <div class="container">
+                        <div class="row ">
+                            <div class="col-lg-7">
+                                <div class="about-text go-to">
+                                    <h2 class="dark-color text-danger">Conform to Delete Supplier </h2>
+
+                                    <h3 class="theme-color lead fs-2">@Html.DisplayFor(x => x.CompanyName)</h3>
+                                    <div class="row about-list">
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label class="fs-4">Publisher name</label>
+                                                <p>@Html.DisplayFor(x => x.CompanyName)</p>
+                                            </div>
+                                            <div class="media">
+                                                <label class="fs-4">Topic</label>
+                                                <p>@Html.DisplayFor(x => x.ContactTitle)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label class="fs-4">E-mail</label>
+                                                <p>@Html.DisplayFor(x => x.Email)</p>
+                                            </div>
+                                            <div class="media">
+                                                <label class="fs-4">Phone</label>
+                                                <p>@Html.DisplayFor(x => x.Phone)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label class="fs-4">Country</label>
+                                                <p>@Html.DisplayFor(x => x.Country)</p>
+                                            </div>
+                                            <div class="media">
+                                                <label class="fs-4">City</label>
+                                                <p>@Html.DisplayFor(x => x.City)</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="media">
+                                                <label class="fs-4">Address</label>
+                                                <p>@Html.DisplayFor(x => x.Address)</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                    </div>
+
+                    @*add btn*@
+                    <div class=" mt-4">
+                        <div class="row justify-content-md-end align-self-end">
+                            <div class="col-6 col-lg-3">
+
+                                <button type="submit" class="btn btn-danger col-6">Conform To Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+ </div>
+
+

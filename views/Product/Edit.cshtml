@@ -1,0 +1,112 @@
+﻿
+@model MyEcommerceAdmin.Models.ProductVM
+@{
+    ViewBag.Title = "Edit Product Details";
+}
+
+<div class="container">
+
+    @*back button*@
+    <div class="counter mt-4">
+        <div class="row">
+            <div class="col-6 col-lg-3">
+                <a href="@Url.Action("Index", "Product")" class="btn btn-danger btn-sm fs-4 mb-4"> << Back</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="row g-3">
+                
+                <div class="col-md-8">
+                    <div class="d-flex">
+                        <img src="@Url.Content(Model.PicturePath)" alt="@Model.Name" width="200" height="200" />
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12">
+                @using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                    @Html.HiddenFor(x => x.ProductID)
+                    @Html.HiddenFor(x => x.PicturePath)
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Book name</label>
+                        @Html.TextBoxFor(x => x.Name, new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Writter name</label>
+                        @Html.DropDownListFor(x => x.SupplierID, ViewBag.supplierList as SelectList, "***Select Supplier***", new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.SupplierID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        @Html.DropDownListFor(x => x.CategoryID, ViewBag.categoryList as SelectList, "***Select Category***", new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.CategoryID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Price</label>
+                        @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control fs-4", Type = "money" })
+                        @Html.ValidationMessageFor(x => x.UnitPrice, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Previous price</label>
+                        @Html.TextBoxFor(x => x.OldPrice, new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.OldPrice, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Description</label>
+                        @Html.TextAreaFor(x => x.ShortDescription, new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.ShortDescription, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Available
+                            <span class="badge bg-danger">Permission to sell, Amount</span>
+                        </label>
+                        @Html.TextBoxFor(x => x.UnitInStock, new { @class = "form-control fs-4" })
+                        @Html.ValidationMessageFor(x => x.UnitInStock, "", new { @class = "text-danger" })
+                    </div>
+
+                    
+
+
+
+
+
+
+                    <div class="col-md-6">
+                        <label class="form-label">Update an image</label>
+                        @Html.TextBoxFor(x => x.Picture, new { @class = "form-control fs-4", Type = "file" })
+                        @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+                    </div>
+
+
+
+
+                </div>
+
+                    
+
+                    //update btn
+                    <div class="mt-4">
+                        <div class="row justify-content-md-end align-self-end">
+                            <div class="col-6 col-lg-3">
+                                <button type="submit" class="btn btn-success btn-lg col-6">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
